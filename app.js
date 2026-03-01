@@ -1627,8 +1627,9 @@ function init() {
 // ─── HIJRI DATE UTILITIES ────────────────────────────────────────────────────
 
 init();
-// Deferred date update — ensures dates render even if init() had a timing issue
-setTimeout(() => { try { updateHomeDates(); } catch(e) {} }, 150);
+// Ensure dates always render — call immediately after init and again after first paint
+try { updateHomeDates(); } catch(e) {}
+requestAnimationFrame(() => { try { updateHomeDates(); } catch(e) {} });
 
 const ISLAMIC_DATES = {
   '1-1':  'Islamic New Year',

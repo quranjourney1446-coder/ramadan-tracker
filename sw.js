@@ -1,7 +1,7 @@
 // Ramadan Tracker — Service Worker
 // Caches all app assets for full offline support
 
-const CACHE_NAME = 'ramadan-tracker-v7';
+const CACHE_NAME = 'ramadan-tracker-v8';
 const BASE = '/ramadan-tracker';
 const ASSETS = [
   BASE + '/',
