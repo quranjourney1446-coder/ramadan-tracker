@@ -1,20 +1,21 @@
 // Ramadan Tracker — Service Worker
 // Caches all app assets for full offline support
 
-const CACHE_NAME = 'ramadan-tracker-v6';
+const CACHE_NAME = 'ramadan-tracker-v7';
+const BASE = '/ramadan-tracker';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/app.js',
-  '/styles.css',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/audio/tasbih.m4a',
-  '/audio/tahmeed.m4a',
-  '/audio/tahleel.m4a',
-  '/audio/takbeer.m4a',
-  '/audio/salawat.m4a',
+  BASE + '/',
+  BASE + '/index.html',
+  BASE + '/app.js',
+  BASE + '/styles.css',
+  BASE + '/manifest.json',
+  BASE + '/icons/icon-192.png',
+  BASE + '/icons/icon-512.png',
+  BASE + '/audio/tasbih.m4a',
+  BASE + '/audio/tahmeed.m4a',
+  BASE + '/audio/tahleel.m4a',
+  BASE + '/audio/takbeer.m4a',
+  BASE + '/audio/salawat.m4a',
 ];
 
 // Install: pre-cache all assets
@@ -59,7 +60,7 @@ self.addEventListener('fetch', (event) => {
         .catch(() => {
           // If offline and not cached, return the app shell
           if (event.request.destination === 'document') {
-            return caches.match('/index.html');
+            return caches.match(BASE + '/index.html');
           }
         });
     })

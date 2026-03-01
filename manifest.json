@@ -2,22 +2,23 @@
   "name": "Ramadan Tracker",
   "short_name": "Ramadan",
   "description": "Track your ibadah, habits, vices and goals across all 30 days of Ramadan",
-  "start_url": "/",
+  "start_url": "/ramadan-tracker/",
+  "scope": "/ramadan-tracker/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#F5ECD7",
-  "theme_color": "#8B5E3C",
+  "theme_color": "#2E7D32",
   "lang": "en",
   "categories": ["lifestyle", "productivity", "religion"],
   "icons": [
-    { "src": "/icons/icon-72.png",  "sizes": "72x72",   "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "icons/icon-72.png",  "sizes": "72x72",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "screenshots": [],
   "shortcuts": [
@@ -25,15 +26,15 @@
       "name": "Log Today",
       "short_name": "Log",
       "description": "Open today's daily ibadah log",
-      "url": "/?screen=log",
-      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+      "url": "/ramadan-tracker/?screen=log",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
     },
     {
       "name": "View Scores",
       "short_name": "Scores",
       "description": "See your Ramadan evaluation scores",
-      "url": "/?screen=scores",
-      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+      "url": "/ramadan-tracker/?screen=scores",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
     }
   ]
 }
