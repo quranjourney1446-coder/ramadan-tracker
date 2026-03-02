@@ -1639,6 +1639,20 @@ init();
 try { updateHomeDates(); } catch(e) {}
 requestAnimationFrame(() => { try { updateHomeDates(); } catch(e) {} });
 
+// Start dhikr reminder timer after first user interaction
+// (browsers block audio autoplay until user has interacted with the page)
+(function startDhikrOnInteraction() {
+  function onFirstInteraction() {
+    document.removeEventListener('click', onFirstInteraction, true);
+    document.removeEventListener('touchstart', onFirstInteraction, true);
+    if (state.dhikrReminderEnabled && !state.dhikrReminderTimer) {
+      startDhikrReminderTimer();
+    }
+  }
+  document.addEventListener('click', onFirstInteraction, true);
+  document.addEventListener('touchstart', onFirstInteraction, true);
+})();
+
 const ISLAMIC_DATES = {
   '1-1':  'Islamic New Year',
   '1-10': 'Day of Ashura',
