@@ -294,6 +294,11 @@ const GUIDE_SECTIONS = [
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
 
+// Hijri calendar view state — declared here so init() can access them before their original position
+let hijriCalYear = 1447;
+let hijriCalExpandedMonth = null;
+let hijriTempOffset = 0;
+
 let state = {
   selectedDay: 1,
   logSelectedDay: 1,
@@ -1778,8 +1783,6 @@ function updateHomeDates() {
 
 // ─── HIJRI ADJUST MODAL ──────────────────────────────────────────────────────
 
-let hijriTempOffset = 0;
-
 function openHijriAdjust() {
   hijriTempOffset = data.hijriOffset || 0;
   renderHijriAdjustModal();
@@ -1810,8 +1813,6 @@ function saveHijriOffset() {
 
 // ─── HIJRI CALENDAR STATE ────────────────────────────────────────────────────
 
-let hijriCalYear = 1447;
-
 function hijriCalPrevYear() {
   hijriCalYear--;
   renderHijriCalendar();
@@ -1821,8 +1822,6 @@ function hijriCalNextYear() {
   hijriCalYear++;
   renderHijriCalendar();
 }
-
-let hijriCalExpandedMonth = null;
 
 function toggleHijriMonth(m) {
   hijriCalExpandedMonth = hijriCalExpandedMonth === m ? null : m;
