@@ -531,6 +531,30 @@
   </div>
 </div>
 
+<script>
+// Error diagnostic — shows any JS error visibly on screen
+window.onerror = function(msg, src, line, col, err) {
+  var el = document.getElementById('js-error-banner');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'js-error-banner';
+    el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#c00;color:#fff;font-size:13px;padding:8px 12px;font-family:monospace;word-break:break-all';
+    document.body.appendChild(el);
+  }
+  el.textContent = 'JS ERROR line ' + line + ': ' + msg + ' | ' + (src||'').split('/').pop();
+  return false;
+};
+window.addEventListener('unhandledrejection', function(e) {
+  var el = document.getElementById('js-error-banner');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'js-error-banner';
+    el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#c00;color:#fff;font-size:13px;padding:8px 12px;font-family:monospace;word-break:break-all';
+    document.body.appendChild(el);
+  }
+  el.textContent = 'PROMISE ERROR: ' + (e.reason && e.reason.message ? e.reason.message : String(e.reason));
+});
+</script>
 <script src="app.v10.js"></script>
 </body>
 </html>
