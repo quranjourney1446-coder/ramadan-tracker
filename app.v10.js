@@ -1734,8 +1734,29 @@ function formatGregShort(date) {
 
 function updateHomeDates() {
   const now = new Date();
-  const h = gregorianToHijri(now, data.hijriOffset || 0);
-  const hijriStr = `${h.day} ${h.monthName} ${h.year} AH`;
+  const offset = data.hijriOffset || 0;
+  const shifted = new Date(now.getTime() + offset * 86400000);
+
+  // Primary: use browser's built-in Intl Islamic calendar (works on all modern phones)
+  let hijriStr = '';
+  try {
+    const intlHijri = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    }).formatToParts(shifted);
+    const parts = {};
+    intlHijri.forEach(p => { parts[p.type] = p.value; });
+    // parts.month is like "Ramadan", parts.day is "15", parts.year is "1447"
+    hijriStr = `${parts.day} ${parts.month} ${parts.year} AH`;
+  } catch(e) {
+    // Fallback: custom algorithm
+    try {
+      const h = gregorianToHijri(shifted, 0);
+      hijriStr = `${h.day} ${h.monthName} ${h.year} AH`;
+    } catch(e2) {
+      hijriStr = 'Date unavailable';
+    }
+  }
+
   const gregStr = formatGreg(now);
 
   const hijriEl = document.getElementById('home-hijri-date');
